@@ -1,6 +1,4 @@
-## Description
-
-Web scrapping using scrappy
+## Web scrapping using scrappy
 
 ## 1. Create a virtual environment:
 ```
