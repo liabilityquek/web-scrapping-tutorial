@@ -63,7 +63,8 @@ scrapy crawl bookspider -O myscrapeddata.csv
 ## Technologies & Tools Used
 
 <li>Python</li>
-<li>scrapy</li>
+<li>Scrapy</li>
+<li>Postgres</li>
 
 ## References
 Various sources which I have seek guidance from:
