@@ -73,8 +73,8 @@ class SaveDataToPostgresPipeline:
 
     def __init__(self):
         hostname = 'localhost'
-        username = 'postgres'
-        password = '123'
+        username = os.getenv('POSTGRES_USERNAME')
+        password = os.getenv('POSTGRES_PASSWORD')
         database = 'webscraping_bookdata'
         self.connection = psycopg2.connect(
             host=hostname, user=username, password=password,  

@@ -1,5 +1,6 @@
 import scrapy
 from webscrapper.items import BookItem
+import random
 
 class BookspiderSpider(scrapy.Spider):
     name = 'bookspider'
@@ -7,9 +8,10 @@ class BookspiderSpider(scrapy.Spider):
     start_urls = ['https://books.toscrape.com/']
     
     # saving data into a json format
-    # custom_settings = {
-    #     'FEEDS': { 'bookdata.json': { 'format': 'json',}}
-    #     }
+    custom_settings = {
+        'FEEDS': { 'bookdata.json': { 'format': 'json',}}
+        }
+   
 
     def parse(self, response):
         books = response.css('article.product_pod')

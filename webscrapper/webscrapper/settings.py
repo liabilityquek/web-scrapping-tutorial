@@ -7,15 +7,23 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 BOT_NAME = "webscrapper"
 
 SPIDER_MODULES = ["webscrapper.spiders"]
 NEWSPIDER_MODULE = "webscrapper.spiders"
-
+SCRAPEOPS_API_KEY = os.getenv("SCRAPEOPS_API_KEY")
+SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = os.getenv("SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT")
+SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
+SCRAPEOPS_NUM_RESULTS = 50
 # FEEDS = {
 #     'bookdata.json': {'format': 'json'}
 # }
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
+# Set A Fake User-Agent In Scrapy
 #USER_AGENT = "webscrapper (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
@@ -52,9 +60,10 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    "webscrapper.middlewares.WebscrapperDownloaderMiddleware": 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   # "webscrapper.middlewares.WebscrapperDownloaderMiddleware": 543,
+   "webscrapper.middlewares.ScrapeOpsFakeUserAgentMiddleware": 543,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -70,7 +79,7 @@ ROBOTSTXT_OBEY = True
 
 ITEM_PIPELINES = {
    "webscrapper.pipelines.WebscrapperPipeline": 300,
-   "webscrapper.pipelines.SaveDataToPostgresPipeline": 400,
+   # "webscrapper.pipelines.SaveDataToPostgresPipeline": 400,
 }
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
