@@ -1,16 +1,25 @@
 import scrapy
 from webscrapper.items import BookItem
 import random
+import os
+from dotenv import load_dotenv
+from urllib.parse import urlencode
+load_dotenv()
+
+API_KEY = os.getenv('API_KEY')
 
 class BookspiderSpider(scrapy.Spider):
     name = 'bookspider'
-    allowed_domains = ['books.toscrape.com']
+    allowed_domains = ['books.toscrape.com', 'proxy.scrapeops.io']
     start_urls = ['https://books.toscrape.com/']
     
     # saving data into a json format
     custom_settings = {
         'FEEDS': { 'bookdata.json': { 'format': 'json',}}
         }
+    
+    def start_requests(self):
+        yield scrapy.Request(url=self.start_urls[0], callback=self.parse)
    
 
     def parse(self, response):
@@ -22,7 +31,7 @@ class BookspiderSpider(scrapy.Spider):
                 book_url = 'https://books.toscrape.com/' + individual_book_url
             else:
                 book_url = 'https://books.toscrape.com/catalogue/' + individual_book_url
-            yield response.follow(book_url, callback=self.parse_book_page)
+            yield scrapy.Request(url=book_url, callback=self.parse_book_page)
         
         next_page = response.css('li.next a ::attr(href)').get()
         
@@ -31,7 +40,7 @@ class BookspiderSpider(scrapy.Spider):
                 next_page_url = 'https://books.toscrape.com/' + next_page
             else:
                 next_page_url = 'https://books.toscrape.com/catalogue/' + next_page
-            yield response.follow(next_page_url, callback=self.parse)
+            yield scrapy.Request(url=next_page_url, callback=self.parse)
             
     def parse_book_page(self, response):
         table_row = response.css("table tr")

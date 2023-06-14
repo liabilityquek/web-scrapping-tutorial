@@ -67,7 +67,7 @@ scrapy crawl bookspider -O myscrapeddata.csv
 <li>Postgres</li>
 
 ## External API used
-<a href=https://scrapeops.io/>Scrapyops</a>
+<a href=https://scrapeops.io>Scrapyops</a>
 
 ## References
 Various sources which I have seek guidance from:
@@ -77,4 +77,6 @@ Various sources which I have seek guidance from:
 <li><a href=https://thepythonscrapyplaybook.com/freecodecamp-beginner-course>Scrapy Playbook</a>
 </li>
 <li><a href=https://docs.scrapy.org/en/latest/intro/tutorial.html>Scrapy documentation</a>
+</li>
+<li><a href=https://scrapeops.io/docs/fake-user-agent-headers-api/integrations/python-scrapy>Scrapyops- Fake Headers Integration</a>
 </li>

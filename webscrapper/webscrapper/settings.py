@@ -22,6 +22,11 @@ SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
 SCRAPEOPS_NUM_RESULTS = 50
 SCRAPEOPS_FAKE_BROWSER_HEADER_ENDPOINT = os.getenv('SCRAPEOPS_FAKE_BROWSER_HEADER_ENDPOINT')
 SCRAPEOPS_FAKE_BROWSER_HEADER_ENABLED = True
+SCRAPEOPS_API_KEY = os.getenv('API_KEY')
+SCRAPEOPS_PROXY_ENABLED = True
+
+# Proxy - IP address to be in US
+SCRAPEOPS_PROXY_SETTINGS = {'country': 'us'}
 # FEEDS = {
 #     'bookdata.json': {'format': 'json'}
 # }
@@ -66,7 +71,9 @@ DOWNLOADER_MIDDLEWARES = {
    # "webscrapper.middlewares.WebscrapperDownloaderMiddleware": 543,
    # "webscrapper.middlewares.ScrapeOpsFakeUserAgentMiddleware": 543,
    "webscrapper.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware": 543,
+   'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 725,
 }
+
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
