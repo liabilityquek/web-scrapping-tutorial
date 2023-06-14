@@ -66,6 +66,9 @@ scrapy crawl bookspider -O myscrapeddata.csv
 <li>Scrapy</li>
 <li>Postgres</li>
 
+## External API used
+<a href=https://scrapeops.io/>Scrapyops</a>
+
 ## References
 Various sources which I have seek guidance from:
 </li>
