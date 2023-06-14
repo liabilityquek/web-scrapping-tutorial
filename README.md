@@ -30,8 +30,9 @@ scrapy startproject <project_name>
     └── spiders
         └── __init__.py
 ```
+## 5. Create a file in spiders folder which is this git repo is bookspider.py
 
-## 5. Using scrapy shell to create CSS selectors:
+## 6. Using scrapy shell to create CSS selectors:
 ```
 pip3 install ipython
 ```
@@ -40,23 +41,23 @@ To open Scrapy shell use this command:
 ```
 scrapy shell
 ```
-## 6. Edit your scrapy.cfg file like so:
+## 7. Edit your scrapy.cfg file like so:
 ```
 [settings]
 default = chocolatescraper.settings
 shell = ipython
 ```
-## 7. Running scrapy spider:
+## 8. Running scrapy spider:
 ```
-scrapy crawl <project_name>
+scrapy crawl bookspider
 ```
-Saving the data to a JSON file we can use the -O option, followed by the name of the file:
+Saving the data to a JSON file we can use the -O option(overwrite existing file) or -o option(update existing file), followed by the name of the file:
 ```
-scrapy crawl <project_name> -O myscrapeddata.json
+scrapy crawl bookspider -O myscrapeddata.json
 ```
 CSV format:
 ```
-scrapy crawl <project_name> -O myscrapeddata.csv
+scrapy crawl bookspider -O myscrapeddata.csv
 ```
 
 ## Technologies & Tools Used
