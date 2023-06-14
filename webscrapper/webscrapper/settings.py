@@ -20,14 +20,16 @@ SCRAPEOPS_API_KEY = os.getenv("SCRAPEOPS_API_KEY")
 SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = os.getenv("SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT")
 SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
 SCRAPEOPS_NUM_RESULTS = 50
+SCRAPEOPS_FAKE_BROWSER_HEADER_ENDPOINT = os.getenv('SCRAPEOPS_FAKE_BROWSER_HEADER_ENDPOINT')
+SCRAPEOPS_FAKE_BROWSER_HEADER_ENABLED = True
 # FEEDS = {
 #     'bookdata.json': {'format': 'json'}
 # }
 # Set A Fake User-Agent In Scrapy
 #USER_AGENT = "webscrapper (+http://www.yourdomain.com)"
 
-# Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+# Obey robots.txt rules whether site can be scraped
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -62,7 +64,8 @@ ROBOTSTXT_OBEY = True
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    # "webscrapper.middlewares.WebscrapperDownloaderMiddleware": 543,
-   "webscrapper.middlewares.ScrapeOpsFakeUserAgentMiddleware": 543,
+   # "webscrapper.middlewares.ScrapeOpsFakeUserAgentMiddleware": 543,
+   "webscrapper.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware": 543,
 }
 
 # Enable or disable extensions
